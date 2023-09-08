@@ -5,6 +5,8 @@
  */
 package universidad_grupo_87;
 
+import universidad_grupo_87.AccesoADatos.Conexion;
+
 /**
  *
  * @author gabriel925
@@ -15,7 +17,9 @@ public class Universidad_Grupo_87 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Conexion.getConexion();
+        
     }
     
 }
