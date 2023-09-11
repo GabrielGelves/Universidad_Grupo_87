@@ -5,7 +5,10 @@
  */
 package universidad_grupo_87;
 
+import java.time.LocalDate;
+import universidad_grupo_87.AccesoADatos.AlumnoData;
 import universidad_grupo_87.AccesoADatos.Conexion;
+import universidad_grupo_87.Entidades.Alumno;
 
 /**
  *
@@ -18,7 +21,13 @@ public class Universidad_Grupo_87 {
      */
     public static void main(String[] args) {
         
-        Conexion.getConexion();
+        //Conexion.getConexion();
+        Alumno maria=new Alumno(45678912,"Lopez","Maria",LocalDate.of(1990, 12, 12),true);
+        AlumnoData AD=new AlumnoData();
+        
+        
+        AD.guardarAlumno(maria);
+        
         
     }
     
