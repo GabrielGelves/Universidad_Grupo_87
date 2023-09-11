@@ -8,8 +8,6 @@ package universidad_grupo_87.AccesoADatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,7 +29,7 @@ public class Conexion {
         if(connection == null){
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                Connection con = DriverManager.getConnection(URL+DB,USUARIO,PASSWORD);
+                connection = DriverManager.getConnection(URL+DB,USUARIO,PASSWORD);
                 JOptionPane.showMessageDialog(null,"Conexion Exitosa");
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null,"Error en la carga de Driver "+ ex.getMessage());
