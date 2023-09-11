@@ -21,13 +21,11 @@ public class Universidad_Grupo_87 {
     public static void main(String[] args) {
         
         //Conexion.getConexion();
-       AlumnoData Ad=new AlumnoData();
-        Alumno maria=new Alumno(45678912,"Lopez","Maria",LocalDate.of(1990, 12, 12),true);
+        AlumnoData Ad=new AlumnoData();
+        Alumno maria=new Alumno(1,12345678,"Lopez","Marina",LocalDate.of(1995, 12, 12),true);
         
-        
-        
-        Ad.guardarAlumno(maria);
-        
+        //Ad.guardarAlumno(maria);
+        //Ad.modificarAlumno(maria);
         
     }
     

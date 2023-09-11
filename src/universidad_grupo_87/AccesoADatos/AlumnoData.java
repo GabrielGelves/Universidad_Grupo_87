@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidad_grupo_87.Entidades.Alumno;
 
@@ -45,8 +47,44 @@ public class AlumnoData {
                 alumno.setIdAlumno(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Se guardo el nuevo Alumno");
                 
-                ps.close();
+            }
+                ps.close(); 
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"error "+ ex.getMessage());
+        }
+    }
+    
+    public void modificarAlumno(Alumno alumno){
+        String sql="UPDATE alumno SET dni=?, apellido=?,nombre=?,fechaNacimiento=? WHERE idAlumno=?";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getApellido());
+            ps.setString(3, alumno.getNombre());
+            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
+            ps.setInt(5, alumno.getIdAlumno());
+            int exito=ps.executeUpdate();
+            if(exito==1){
+                JOptionPane.showMessageDialog(null, "Se modifico con exito.");
                 
+            }else{
+                JOptionPane.showMessageDialog(null, "No se encontra el alumno");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"error "+ ex.getMessage());
+        }
+    }
+    
+    public void eliminarAlumno(int id){
+        
+        String sql="UPDATE alumno SET estado=0 WHERE idAlumno=?";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito=ps.executeUpdate();
+            if(exito==1){
+                JOptionPane.showMessageDialog(null, "Se elimino el alumno");
             }
             
         } catch (SQLException ex) {
@@ -55,5 +93,6 @@ public class AlumnoData {
         
         
     }
+    
     
 }
