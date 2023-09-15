@@ -35,7 +35,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuFormAlumno = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmFormularioMateria = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -52,11 +52,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGap(0, 452, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 348, Short.MAX_VALUE)
+=======
+            .addGap(0, 398, Short.MAX_VALUE)
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 277, Short.MAX_VALUE)
+>>>>>>> parent of 5f117ec (Revert "vista formulario materia")
         );
 
         jMenuBar1.setBackground(new java.awt.Color(102, 102, 255));
@@ -76,8 +84,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Materia");
 
-        jMenuItem2.setText("Formulario de Materia");
-        jMenu2.add(jMenuItem2);
+        jmFormularioMateria.setText("Formulario de Materia");
+        jmFormularioMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmFormularioMateriaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmFormularioMateria);
 
         jMenuBar1.add(jMenu2);
 
@@ -126,6 +139,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+<<<<<<< HEAD
     private void jMenuFormAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFormAlumnoActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
@@ -136,6 +150,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(GAlumno);
         
     }//GEN-LAST:event_jMenuFormAlumnoActionPerformed
+=======
+    private void jmFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormularioMateriaActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        FormularioMateria fm = new FormularioMateria();
+        fm.setVisible(true);
+        escritorio.add(fm);
+        escritorio.moveToFront(fm);
+    }//GEN-LAST:event_jmFormularioMateriaActionPerformed
+>>>>>>> parent of 5f117ec (Revert "vista formulario materia")
 
     /**
      * @param args the command line arguments
@@ -180,10 +204,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+<<<<<<< HEAD
     private javax.swing.JMenuItem jMenuFormAlumno;
     private javax.swing.JMenuItem jMenuItem2;
+=======
+    private javax.swing.JMenuItem jMenuItem1;
+>>>>>>> parent of 5f117ec (Revert "vista formulario materia")
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jmFormularioMateria;
     // End of variables declaration//GEN-END:variables
 }
