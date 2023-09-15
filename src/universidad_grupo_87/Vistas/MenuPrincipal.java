@@ -140,6 +140,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
 <<<<<<< HEAD
+    
     private void jMenuFormAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFormAlumnoActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
@@ -151,6 +152,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuFormAlumnoActionPerformed
 =======
+
     private void jmFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormularioMateriaActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
@@ -160,6 +162,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(fm);
     }//GEN-LAST:event_jmFormularioMateriaActionPerformed
 >>>>>>> parent of 5f117ec (Revert "vista formulario materia")
+
 
     /**
      * @param args the command line arguments
