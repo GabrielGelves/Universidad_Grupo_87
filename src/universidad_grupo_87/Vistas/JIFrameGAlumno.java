@@ -95,6 +95,11 @@ public class JIFrameGAlumno extends javax.swing.JInternalFrame {
         });
 
         jBModificar.setText("GUARDAR");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("SALIR");
 
@@ -234,6 +239,23 @@ public class JIFrameGAlumno extends javax.swing.JInternalFrame {
         
         limpiarCampos();
     }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+        // TODO add your handling code here:
+        
+        try{
+        AlumnoData aluData = new AlumnoData();
+        Alumno nuevo = aluData.buscarAlumnoPorDni(Integer.parseInt(jTDni.getText()));
+        nuevo.setApellido(jTApellido.getText());
+        nuevo.setNombre(jTNombre.getText());
+        nuevo.setFechaNacimiento(jDateFechaN.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        aluData.modificarAlumno(nuevo);
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "ERROR por favor reintente poniendo los NUMEROS correctos.");
+            
+        }
+        
+    }//GEN-LAST:event_jBModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
