@@ -48,6 +48,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(102, 255, 102));
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 255, 51), null, null));
+        setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -92,8 +93,18 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         });
 
         jBguardar.setText("Guardar");
+        jBguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBguardarActionPerformed(evt);
+            }
+        });
 
         jBsalir.setText("Salir");
+        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBsalirActionPerformed(evt);
+            }
+        });
 
         jcbActivo.setText("Activo");
 
@@ -206,6 +217,21 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
          jTaño.setText(m.getAño()+"");
          jcbActivo.setSelected(m.isEstado());
     }//GEN-LAST:event_jBbuscarActionPerformed
+
+    private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+        // TODO add your handling code here:
+         MateriaData mdn = new MateriaData();
+         Materia m = mdn.buscarMateria(Integer.parseInt(jTidMateria.getText()));
+         m.setNombre(jTnombre.getText());
+         m.setAño(Integer.parseInt(jTaño.getText()));
+         mdn.modificarMateria(m);
+         
+    }//GEN-LAST:event_jBguardarActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jBsalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
