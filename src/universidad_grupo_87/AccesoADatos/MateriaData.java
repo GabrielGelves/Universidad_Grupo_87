@@ -36,7 +36,7 @@ public class MateriaData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 materia.setIdMateria(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Se guardo el nuevo Alumno");
+                JOptionPane.showMessageDialog(null, "Se guardo la nueva Materia");
             }
             ps.close();
         } catch (SQLException ex) {
