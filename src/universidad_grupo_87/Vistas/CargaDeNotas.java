@@ -5,17 +5,27 @@
  */
 package universidad_grupo_87.Vistas;
 
+import javax.swing.table.DefaultTableModel;
+import universidad_grupo_87.AccesoADatos.AlumnoData;
+import universidad_grupo_87.AccesoADatos.InscripcionData;
+import universidad_grupo_87.Entidades.Alumno;
+import universidad_grupo_87.Entidades.Inscripcion;
+
 /**
  *
  * @author gabriel925
  */
 public class CargaDeNotas extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo = new DefaultTableModel();
+
     /**
      * Creates new form CargaDeNotas
      */
     public CargaDeNotas() {
         initComponents();
+        cargarCombo();
+        armarCabecera();
     }
 
     /**
@@ -30,10 +40,10 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbAlumnos = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jtnota = new javax.swing.JTable();
+        jbGuardar = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
 
         setClosable(true);
@@ -45,9 +55,9 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccione un Alumno:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbAlumnos.setToolTipText("");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtnota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,9 +68,9 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtnota);
 
-        jButton1.setText("Guardar");
+        jbGuardar.setText("Guardar");
 
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -87,14 +97,14 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
-                .addComponent(jButton1)
+                .addComponent(jbGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Salir)
                 .addGap(78, 78, 78))
@@ -109,12 +119,12 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jbGuardar)
                     .addComponent(Salir))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
@@ -130,12 +140,52 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JComboBox<Alumno> jcbAlumnos;
+    private javax.swing.JTable jtnota;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarCombo() {
+
+        AlumnoData ad = new AlumnoData();
+        for (Alumno alumno : ad.listarAlumnos()) {
+            jcbAlumnos.addItem(alumno);
+        }
+
+    }
+
+    private void armarCabecera() {
+
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Nota");
+        jtnota.setModel(modelo);
+
+    }
+
+    public void borrarFilas() {
+        int x = jtnota.getRowCount() - 1;
+        for (; x >= 0; x--) {
+            modelo.removeRow(x);
+        }
+        
+    }
+
+    private void cargartabla() {
+        borrarFilas();
+
+        Alumno alum = (Alumno) jcbAlumnos.getSelectedItem();
+        InscripcionData ind = new InscripcionData();
+
+        for (Inscripcion ins : ind.obtenerInscripcionesPorAlumno(alum.getIdAlumno())) {
+            modelo.addRow(new Object[]{ins.getIdInscripcion(), ins.getMateria(), ins.getNota()});
+        }
+    }
+
 }
+
+

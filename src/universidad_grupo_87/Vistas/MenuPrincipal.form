@@ -57,10 +57,13 @@
                 <Property name="text" type="java.lang.String" value="Manejo de Inscipciones"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="ManipulacionDeNota">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manipulaci&#xf3;n de Notas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManipulacionDeNotaActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
