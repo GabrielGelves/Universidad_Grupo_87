@@ -17,15 +17,25 @@ import universidad_grupo_87.Entidades.Inscripcion;
  */
 public class CargaDeNotas extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel() {
+
+        public boolean isCellEditable(int fila, int columna) {
+            if (columna == 2) {
+                return true;
+            }
+            return false;
+        }
+
+    };
 
     /**
      * Creates new form CargaDeNotas
      */
     public CargaDeNotas() {
         initComponents();
-        cargarCombo();
         armarCabecera();
+        cargarCombo();
+        
     }
 
     /**
@@ -56,6 +66,11 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jLabel2.setText("Seleccione un Alumno:");
 
         jcbAlumnos.setToolTipText("");
+        jcbAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbAlumnosActionPerformed(evt);
+            }
+        });
 
         jtnota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,6 +152,14 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
+    private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
+        // TODO add your handling code here:
+       
+            
+            cargarTabla();
+        
+    }//GEN-LAST:event_jcbAlumnosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir;
@@ -168,24 +191,23 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     }
 
     public void borrarFilas() {
-        int x = jtnota.getRowCount() - 1;
-        for (; x >= 0; x--) {
-            modelo.removeRow(x);
+        int x = jtnota.getRowCount()-1;
+
+        for (int i = x; i >= 0; i--) {
+            modelo.removeRow(i);
         }
-        
+
     }
 
-    private void cargartabla() {
+    private void cargarTabla() {
         borrarFilas();
 
         Alumno alum = (Alumno) jcbAlumnos.getSelectedItem();
         InscripcionData ind = new InscripcionData();
 
         for (Inscripcion ins : ind.obtenerInscripcionesPorAlumno(alum.getIdAlumno())) {
-            modelo.addRow(new Object[]{ins.getIdInscripcion(), ins.getMateria(), ins.getNota()});
+            modelo.addRow(new Object[]{ins.getIdInscripcion(), ins.getMateria().getNombre(), ins.getNota()});
         }
     }
 
 }
-
-
