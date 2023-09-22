@@ -94,7 +94,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenu3.setText("Administración");
 
-        jMenuItem3.setText("Manejo de Inscipciones");
+        jMenuItem3.setText("Manejo de Inscripciones");
         jMenu3.add(jMenuItem3);
 
         ManipulacionDeNota.setText("Manipulación de Notas");

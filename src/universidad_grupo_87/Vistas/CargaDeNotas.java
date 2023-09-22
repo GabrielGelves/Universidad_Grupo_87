@@ -5,6 +5,7 @@
  */
 package universidad_grupo_87.Vistas;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidad_grupo_87.AccesoADatos.AlumnoData;
 import universidad_grupo_87.AccesoADatos.InscripcionData;
@@ -35,7 +36,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         initComponents();
         armarCabecera();
         cargarCombo();
-        
+
     }
 
     /**
@@ -86,6 +87,11 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtnota);
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -154,11 +160,34 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
 
     private void jcbAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnosActionPerformed
         // TODO add your handling code here:
-       
-            
-            cargarTabla();
-        
+
+        cargarTabla();
+
     }//GEN-LAST:event_jcbAlumnosActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        // TODO add your handling code here:
+
+        Alumno alu = (Alumno) jcbAlumnos.getSelectedItem();
+        InscripcionData ind = new InscripcionData();
+
+        for (Inscripcion insc : ind.obtenerInscripcionesPorAlumno(alu.getIdAlumno())) {
+            int fs = jtnota.getSelectedRow();
+            if (fs != -1) {
+                int id = (Integer)jtnota.getValueAt(fs,0);
+                String nombre=(String)jtnota.getValueAt(fs,1);
+                double nota = Double.parseDouble((String) jtnota.getValueAt(fs,2));
+                if (insc.getIdInscripcion() == id) {
+                    insc.setNota(nota);
+                    ind.actualizarNota(alu.getIdAlumno(), insc.getMateria().getIdMateria(), insc.getNota());
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "debe seleccionar una fila ");
+            }
+        }
+
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -191,7 +220,7 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
     }
 
     public void borrarFilas() {
-        int x = jtnota.getRowCount()-1;
+        int x = jtnota.getRowCount() - 1;
 
         for (int i = x; i >= 0; i--) {
             modelo.removeRow(i);

@@ -54,7 +54,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Manejo de Inscipciones"/>
+                <Property name="text" type="java.lang.String" value="Manejo de Inscripciones"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ManipulacionDeNota">
