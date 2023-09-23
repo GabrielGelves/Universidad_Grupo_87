@@ -11,6 +11,7 @@ import universidad_grupo_87.AccesoADatos.InscripcionData;
 import universidad_grupo_87.AccesoADatos.MateriaData;
 import universidad_grupo_87.Entidades.Alumno;
 import universidad_grupo_87.Entidades.Inscripcion;
+import universidad_grupo_87.Entidades.Usuarios;
 import universidad_grupo_87.Entidades.Materia;
 
 /**
@@ -25,6 +26,8 @@ public class Universidad_Grupo_87 {
     public static void main(String[] args) {
 
         //Conexion.getConexion();
+        //Login alum = new Login("AlumnoULP","Alum1234",false);
+        //Login admin = new Login("AdministradorULP","Admin1234",true);
         AlumnoData Ad = new AlumnoData();
         Alumno maria = new Alumno(6, 12345678, "Lopez", "Marina", LocalDate.of(1995, 12, 12), true);
         MateriaData MD = new MateriaData();

@@ -5,19 +5,29 @@
  */
 package universidad_grupo_87.Vistas;
 
+import javax.swing.JOptionPane;
+import universidad_grupo_87.Entidades.Usuarios;
+
 /**
  *
  * @author gabriel925
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-
+    Usuarios alum1 = new Usuarios("AlumnoULP", "Alum1234", false);
+    Usuarios admin1 = new Usuarios("AdministradorULP", "Admin1234", true);
+    Usuarios user = new Usuarios();
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         initComponents();
     }
-
+    public MenuPrincipal(Usuarios user) {
+        initComponents();
+        
+        user = new Usuarios();
+        esAdmin();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -235,4 +245,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jmFormularioMateria;
     // End of variables declaration//GEN-END:variables
+
+public boolean esAdmin(){
+    JOptionPane.showMessageDialog(null,"Admin: "+user.isAdmin());
+    return user.isAdmin();
+}
+
+
+
 }
