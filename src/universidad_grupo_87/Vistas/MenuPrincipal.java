@@ -25,7 +25,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal(Usuarios user) {
         initComponents();
         
-        user = new Usuarios();
+        this.user = user;
         esAdmin();
     }
     /**
@@ -246,9 +246,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jmFormularioMateria;
     // End of variables declaration//GEN-END:variables
 
-public boolean esAdmin(){
-    JOptionPane.showMessageDialog(null,"Admin: "+user.isAdmin());
-    return user.isAdmin();
+public void esAdmin(){
+    if(user.isAdmin()){
+        JOptionPane.showMessageDialog(null, "Bienvenido Administrador!");
+    }else{
+        
+        this.jMenuItem1.setEnabled(false);
+        this.jMenuItem2.setEnabled(false);
+        this.ManipulacionDeNota.setEnabled(false);
+        
+        
+    }
+    
 }
 
 
