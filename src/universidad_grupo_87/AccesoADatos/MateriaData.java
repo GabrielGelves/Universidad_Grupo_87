@@ -73,7 +73,7 @@ public class MateriaData {
     }
 
     public void modificarMateria(Materia materia) {
-        String sql = "UPDATE materia SET nombre=?, año=?, WHERE idMateria = ?";
+        String sql = "UPDATE materia SET nombre=?, año=? WHERE idMateria = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -94,7 +94,7 @@ public class MateriaData {
     }
 
     public void eliminarMateria(int id) {
-        String sql = "UPDATE materia SET estaedo = 0 WHERE idMateria=?";
+        String sql = "UPDATE materia SET estado = 0 WHERE idMateria=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
