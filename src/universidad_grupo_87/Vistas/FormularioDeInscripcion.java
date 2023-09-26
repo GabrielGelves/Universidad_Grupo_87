@@ -58,6 +58,8 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
         jbAnularInscripcion = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 153, 102));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("FORMULARIO DE INSCRIPCION");
 
