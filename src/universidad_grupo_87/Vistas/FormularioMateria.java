@@ -5,6 +5,7 @@
  */
 package universidad_grupo_87.Vistas;
 
+import javax.swing.JOptionPane;
 import universidad_grupo_87.AccesoADatos.MateriaData;
 import universidad_grupo_87.Entidades.Materia;
 
@@ -192,40 +193,51 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
         // TODO add your handling code here:
-        
+
         MateriaData mdn = new MateriaData();
         String nombre = jTnombre.getText();
         int año = Integer.parseInt(jTaño.getText());
         boolean estado = jcbActivo.isSelected();
-        Materia nuevo = new Materia(nombre,año,estado);
+        Materia nuevo = new Materia(nombre, año, estado);
         mdn.guardarMateria(nuevo);
-        
+
     }//GEN-LAST:event_jBnuevoActionPerformed
 
     private void jBeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeliminarActionPerformed
         // TODO add your handling code here:
         MateriaData mdn = new MateriaData();
         mdn.eliminarMateria(Integer.parseInt(jTidMateria.getText()));
-        
+
     }//GEN-LAST:event_jBeliminarActionPerformed
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
         // TODO add your handling code here:
-         MateriaData mdn = new MateriaData();
-         Materia m = mdn.buscarMateria(Integer.parseInt(jTidMateria.getText()));
-         jTnombre.setText(m.getNombre());
-         jTaño.setText(m.getAño()+"");
-         jcbActivo.setSelected(m.isEstado());
+
+        try {
+
+           
+                int codigo = Integer.parseInt(jTidMateria.getText());
+                MateriaData mdn = new MateriaData();
+
+                Materia m = mdn.buscarMateria(codigo);
+                jTnombre.setText(m.getNombre());
+                jTaño.setText(m.getAño() + "");
+                jcbActivo.setSelected(m.isEstado());
+            
+        } catch (NumberFormatException ne) {
+            JOptionPane.showMessageDialog(this, "Asegurese que el casillero Codigo este lleno con numero entero");
+
+        }
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         // TODO add your handling code here:
-         MateriaData mdn = new MateriaData();
-         Materia m = mdn.buscarMateria(Integer.parseInt(jTidMateria.getText()));
-         m.setNombre(jTnombre.getText());
-         m.setAño(Integer.parseInt(jTaño.getText()));
-         mdn.modificarMateria(m);
-         
+        MateriaData mdn = new MateriaData();
+        Materia m = mdn.buscarMateria(Integer.parseInt(jTidMateria.getText()));
+        m.setNombre(jTnombre.getText());
+        m.setAño(Integer.parseInt(jTaño.getText()));
+        mdn.modificarMateria(m);
+
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed

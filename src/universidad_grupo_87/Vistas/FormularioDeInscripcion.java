@@ -246,6 +246,7 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
         // TODO add your handling code here:
+        if (jrbMateriasNoInscriptas.isSelected()){
         Alumno alu = (Alumno)jcbAlumnoSeleccionado.getSelectedItem();
         InscripcionData ind=new InscripcionData();
          int filaS=jtVistaInscripciones.getSelectedRow();
@@ -255,6 +256,14 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
          Materia mater = new Materia(idMateria, nombre, año, true);
          Inscripcion ins = new Inscripcion(alu, mater, 0);
          ind.guardarInscripcion(ins);
+         if (filaS!=1){
+        JOptionPane.showMessageDialog(this, "Inscripción exitosa");
+        modelo.removeRow(filaS);
+    }else{
+        JOptionPane.showMessageDialog(this, "Usted no ha seleccionado la materia que desea inscribir");
+   
+    }
+        }
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jrbMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasActionPerformed
