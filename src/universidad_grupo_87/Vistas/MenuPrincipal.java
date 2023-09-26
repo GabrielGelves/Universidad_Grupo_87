@@ -105,6 +105,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Administración");
 
         jMenuItem3.setText("Manejo de Inscripciones");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         ManipulacionDeNota.setText("Manipulación de Notas");
@@ -196,6 +201,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.moveToFront(cn);
     }//GEN-LAST:event_ManipulacionDeNotaActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        FormularioDeInscripcion finsc= new FormularioDeInscripcion();
+        finsc.setVisible(true);
+        escritorio.add(finsc);
+        escritorio.moveToFront(finsc);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -260,6 +275,7 @@ public void esAdmin(){
     
 }
 
+    
 
 
 }
