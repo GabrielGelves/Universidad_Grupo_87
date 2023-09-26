@@ -220,14 +220,16 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
 
     private void jbAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularInscripcionActionPerformed
         // TODO add your handling code here:
+    int filaS=jtVistaInscripciones.getSelectedRow();
     if (jrbMateriasInscriptas.isSelected()){
-        
-      int filaS=jtVistaInscripciones.getSelectedRow();
+    if (filaS!=-1){   
+      //int filaS=jtVistaInscripciones.getSelectedRow();
     int idMateria = (Integer)jtVistaInscripciones.getValueAt(filaS, 0);
+    
     InscripcionData inscDt = new InscripcionData();
     Alumno alum = (Alumno)jcbAlumnoSeleccionado.getSelectedItem();
     inscDt.borrarInscripcionMateriaAlumno(alum.getIdAlumno(), idMateria);
-    if (filaS!=1){
+    
         JOptionPane.showMessageDialog(this, "Inscripción eliminada exitosamente");
         modelo.removeRow(filaS);
     }else{
@@ -246,23 +248,26 @@ public class FormularioDeInscripcion extends javax.swing.JInternalFrame {
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
         // TODO add your handling code here:
+        int filaS=jtVistaInscripciones.getSelectedRow();
         if (jrbMateriasNoInscriptas.isSelected()){
+        if (filaS!=-1){
         Alumno alu = (Alumno)jcbAlumnoSeleccionado.getSelectedItem();
         InscripcionData ind=new InscripcionData();
-         int filaS=jtVistaInscripciones.getSelectedRow();
+         //int filaS=jtVistaInscripciones.getSelectedRow();
          int idMateria = (Integer)jtVistaInscripciones.getValueAt(filaS, 0);
          String nombre = (String)jtVistaInscripciones.getValueAt(filaS, 1);
          int año = (Integer)jtVistaInscripciones.getValueAt(filaS, 2);
          Materia mater = new Materia(idMateria, nombre, año, true);
          Inscripcion ins = new Inscripcion(alu, mater, 0);
          ind.guardarInscripcion(ins);
-         if (filaS!=1){
+         
         JOptionPane.showMessageDialog(this, "Inscripción exitosa");
         modelo.removeRow(filaS);
     }else{
         JOptionPane.showMessageDialog(this, "Usted no ha seleccionado la materia que desea inscribir");
-   
     }
+        }else{
+        JOptionPane.showMessageDialog(this, "Seleccione una materia en la que no esté inscripto");
         }
     }//GEN-LAST:event_jbInscribirActionPerformed
 
