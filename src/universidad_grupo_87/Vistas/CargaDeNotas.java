@@ -57,7 +57,9 @@ public class CargaDeNotas extends javax.swing.JInternalFrame {
         jbGuardar = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(225, 63, 63));
         setClosable(true);
+        setOpaque(true);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Carga De Notas");

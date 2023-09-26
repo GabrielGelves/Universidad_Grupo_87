@@ -55,16 +55,16 @@ public class Universidad_Grupo_87 {
 //            
 //        }
 
-        for (Alumno x : ide.obtenerAlumnoXMateria(4)) {
-            System.out.println(x.toString());
-            
-        }            
-           
-        
-//        for (Materia x : ide.obtenerMateriasNOCursadas(1)) {
+//        for (Alumno x : ide.obtenerAlumnoXMateria(4)) {
 //            System.out.println(x.toString());
 //            
-//        }
+//        }            
+           
+        
+        for (Materia x : ide.obtenerMateriasNOCursadas(1)) {
+            System.out.println(x.toString());
+            
+        }
           
         
         //Ad.guardarAlumno(maria);
