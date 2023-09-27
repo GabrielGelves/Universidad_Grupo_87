@@ -298,8 +298,9 @@ public class JIFrameGAlumno extends javax.swing.JInternalFrame {
         
         boolean mayus= key >=65 && key <=90;
         boolean minus= key >=97 && key <=122;
+        boolean espacio = key == 32;
         
-        if(!(minus || mayus)){
+        if(!(minus || mayus || espacio)){
             evt.consume();
         }
         
