@@ -19,10 +19,13 @@ import universidad_grupo_87.Entidades.Materia;
  * @author Discar
  */
 public class IFrameConsultaAluMater extends javax.swing.JInternalFrame {
-    private DefaultTableModel modelo = new DefaultTableModel();
-    public boolean isCellEditable(int f, int c) {
+    private DefaultTableModel modelo = new DefaultTableModel(){
+       @Override
+       public boolean isCellEditable(int f, int c) {
             return false;
-        }
+        } 
+    };
+    
     
     /**
      * Creates new form IFrameConsultaAluMater

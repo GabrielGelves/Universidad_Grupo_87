@@ -73,6 +73,18 @@ public class JIFrameGAlumno extends javax.swing.JInternalFrame {
 
         jLabel7.setText("FECHA DE NACIMIENTO: ");
 
+        jTApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTApellidoKeyTyped(evt);
+            }
+        });
+
+        jTNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTNombreKeyTyped(evt);
+            }
+        });
+
         jBuscar.setText("BUSCAR");
         jBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,13 +215,23 @@ public class JIFrameGAlumno extends javax.swing.JInternalFrame {
         int dni = Integer.parseInt(jTDni.getText());
         String apellido = jTApellido.getText();
         String nombre = jTNombre.getText();
-        boolean estado = jCheckBoxEstado.isSelected();
-        LocalDate fNac = jDateFechaN.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        Alumno alu = new Alumno(dni, apellido, nombre, fNac, estado);
-        AlumnoData aluData = new AlumnoData();
-        aluData.guardarAlumno(alu);
+        if(apellido.isEmpty()){
+               JOptionPane.showMessageDialog(null, "Porfavor ingrese un APELLIDO.");
+        }else{
+            if(nombre.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Porfavor ingrese un APELLIDO.");
+            }else{
+                
+            }
+            boolean estado = jCheckBoxEstado.isSelected();
+            LocalDate fNac = jDateFechaN.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Alumno alu = new Alumno(dni, apellido, nombre, fNac, estado);
+            AlumnoData aluData = new AlumnoData();
+            aluData.guardarAlumno(alu);
+        }
+        
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "ERROR. Ingrese los datos en todos correctos en los campos.");
+            JOptionPane.showMessageDialog(null, "ERROR. Ingrese los datos correctos en TODOS los campos.");
         }
         
         limpiarCampos();
@@ -228,6 +250,7 @@ public class JIFrameGAlumno extends javax.swing.JInternalFrame {
         jDateFechaN.setDate(Date.valueOf(nuevo.getFechaNacimiento()));
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "ERROR por favor reintente poniendo los NUMEROS correctos.");
+            limpiarCampos();
         }
 
     }//GEN-LAST:event_jBuscarActionPerformed
@@ -257,7 +280,7 @@ public class JIFrameGAlumno extends javax.swing.JInternalFrame {
         aluData.modificarAlumno(nuevo);
         limpiarCampos();
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "ERROR por favor reintente poniendo los NUMEROS correctos.");
+            JOptionPane.showMessageDialog(null, "ERROR por favor reintente ingresando el DNI correcto.");
             
         }
         
@@ -267,6 +290,35 @@ public class JIFrameGAlumno extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jTApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTApellidoKeyTyped
+        // TODO add your handling code here:
+        
+        int key = evt.getKeyChar();
+        
+        boolean mayus= key >=65 && key <=90;
+        boolean minus= key >=97 && key <=122;
+        boolean espacio = key == 32;
+        
+        if(!(minus || mayus || espacio)){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jTApellidoKeyTyped
+
+    private void jTNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyTyped
+        // TODO add your handling code here:
+        
+        int key = evt.getKeyChar();
+        
+        boolean mayus= key >=65 && key <=90;
+        boolean minus= key >=97 && key <=122;
+        
+        if(!(minus || mayus)){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jTNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -297,4 +349,5 @@ public class JIFrameGAlumno extends javax.swing.JInternalFrame {
         jDateFechaN.repaint();
     }
 
+    
 }
