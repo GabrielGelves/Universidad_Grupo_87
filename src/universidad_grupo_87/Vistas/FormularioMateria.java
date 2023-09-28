@@ -251,11 +251,12 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                 jTnombre.setText(m.getNombre());
                 jTaño.setText(m.getAño() + "");
                 jcbActivo.setSelected(m.isEstado());
-            
+        }catch(NullPointerException np){
+            JOptionPane.showMessageDialog(this,"Ingrese el codigo de la materia a buscar");
         } catch (NumberFormatException ne) {
             JOptionPane.showMessageDialog(this, "Asegurese que el casillero Codigo este lleno con numero entero");
 
-        }
+        } 
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
